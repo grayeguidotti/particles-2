@@ -23,7 +23,7 @@ class Bubble {
 
 }
 
-//this is a hit box with a disrupt method, particle has to be in x box and y box parameters 
+// this is a hit box with a disrupt method, particle has to be in x box and y box parameters 
 // for disrupt to be called
 // if(
 //   this.location.x > mouseX - 10 &&
@@ -41,9 +41,9 @@ class Bubble {
 
 
 
-//Collide
-//add a method, make a numnerOfParticles; variable at top (let numberOfParticles = ___)
-//checkForParticleCollisions(){
+// Collide
+// add a method, make a numnerOfParticles; variable at top (let numberOfParticles = ___)
+// checkForParticleCollisions(){
 // for(let i - 0; i < numberOfParticles; i++){
 //  if(
 //   this.location.x > bubbles[i].location.x - 10 &&
@@ -52,7 +52,8 @@ class Bubble {
 //   this.location.y < bubbles[i].location.y + 10 
 //  )
 //  }
-//  
-//then, add to Update..
+//  this.disrupt();
+ 
+// then, add to Update..
 //  this.checkforParticleCollisions();
-//
+
