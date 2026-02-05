@@ -22,3 +22,20 @@ class Bubble {
   }
 
 }
+
+//this is a hit box with a disrupt method, particle has to be in x box and y box parameters 
+// for disrupt to be called
+// if(
+//   this.location.x > mouseX - 10 &&
+//   this.location.x < mouseX + 10 &&
+//   this.location.y > mouseY - 10 &&
+//   this.location.y < mouseY + 10 &&
+// ){
+//   this.disrupt();
+// }
+
+// disrupt(){
+//  this.velocity = p5.Vector.random2D().mult(5); 
+// }
+// the hot box and disrupt method(); would be called in update
+
