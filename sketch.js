@@ -29,7 +29,7 @@ class Bubble {
 //   this.location.x > mouseX - 10 &&
 //   this.location.x < mouseX + 10 &&
 //   this.location.y > mouseY - 10 &&
-//   this.location.y < mouseY + 10 &&
+//   this.location.y < mouseY + 10 
 // ){
 //   this.disrupt();
 // }
@@ -39,3 +39,20 @@ class Bubble {
 // }
 // the hot box and disrupt method(); would be called in update
 
+
+
+//Collide
+//add a method, make a numnerOfParticles; variable at top (let numberOfParticles = ___)
+//checkForParticleCollisions(){
+// for(let i - 0; i < numberOfParticles; i++){
+//  if(
+//   this.location.x > bubbles[i].location.x - 10 &&
+//   this.location.x < bubbles[i].location.x + 10 &&
+//   this.location.y > bubbles[i].location.y - 10 &&
+//   this.location.y < bubbles[i].location.y + 10 
+//  )
+//  }
+//  
+//then, add to Update..
+//  this.checkforParticleCollisions();
+//
