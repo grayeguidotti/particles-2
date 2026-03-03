@@ -1,29 +1,33 @@
 let bubbles = [];
+let drift;
 
 function setup() {
-  createCanvas(600, 400);
-
+  createCanvas(1100, 600);
+//   drift = createVector(0, 0.2)
 }
 
 function draw() {
-  background(20, 30, 50); // Dark blue background
+//   let driftXAmount = map(mouseX, 0, width, -0.05, 0.05);
+//   let driftYAmount = map(mouseY, 0, height, 0, 0);
+//   drift.set(driftXAmount, driftYAmount);
+ background(20, 30, 50); // Dark blue background
+  
+//  //Add new bubbles over time
+//   for (let i = 0; i < 100; i++) {
+//     bubbles[i] = new Bubble();
+//   }
+    
 }
 
 
-//Add new bubbles over time
-  for (let i = 0; i < 100; i++) {
-    bubbles[i] = new Bubble();
-    drift = createVector(0, 0.2)
-  }
+// class Bubble {
+//   constructor() { // This code runs once when an instance is created.
+// //    this.location = createVector(random(width), random(height));  
+//   }
+// }
 
-class Bubble {
-  constructor() { // This code runs once when an instance is created.
-//    this.location = createVector(random(width), random(height));  
-  }
-
-
-  show (){ // This code runs once when new Bubble is created
-      }
+//   show() { // This code runs once when new Bubble is created
+//       }
 
 // this is a hit box with a disrupt method, particle has to be in x box and y box parameters 
 // for disrupt to be called
