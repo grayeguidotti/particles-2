@@ -20,14 +20,21 @@ function draw() {
 }
 
 
-// class Bubble {
-//   constructor() { // This code runs once when an instance is created.
+class Bubble {
+  constructor() { // This code runs once when an instance is created.
+    this.x = random(width);
+    this.y = random(height);
+    this.r = random(0,10); //radius
+    this.color = (255, 255, 255);
 // //    this.location = createVector(random(width), random(height));  
-//   }
-// }
+  }
+}
 
-//   show() { // This code runs once when new Bubble is created
-//       }
+  // show() { // This code runs once when new Bubble is created
+  //   noStroke();
+  //   fill(this.color);
+  //   // ellipse(this.x - this.r/3, this.y - this.r/3, this.r/2); //found this geometry in a prompt to make a small "bubble highlight"
+  //     }
 
 // this is a hit box with a disrupt method, particle has to be in x box and y box parameters 
 // for disrupt to be called
