@@ -1,5 +1,5 @@
 let bubbles = [];
-// let drift;                                                //for mouse location movement
+let drift;                                                //for mouse location movement
 
 function setup() {
   createCanvas(1100, 800);
@@ -7,9 +7,11 @@ function setup() {
 }
 
 function draw() {
-  // let driftXAmount = map(mouseX, 0, width, -0.05, 0.05);      //copied from Jesse's particle sketch to add velocity for mouse location
-  // let driftYAmount = map(mouseY, 0, height, 0, 0);
-  // drift.set(driftXAmount, driftYAmount);                      //can't get this to work
+  let driftXAmount = map(mouseX, 0, width, -0.05, 0.05);      //copied from Jesse's particle sketch to add velocity for mouse location
+  let driftYAmount = map(mouseY, 0, height, 0, 0);
+    // drift.set(driftXAmount, driftYAmount); 
+    drift = createVector(driftXAmount, driftYAmount);
+    //can't get this to work
   // background(20, 30, 50); // Dark blue background
   background(0); //black background
 
@@ -22,9 +24,9 @@ function draw() {
   for (let i = bubbles.length - 1; i >= 0; i--) { //iterating the array backwards, The loop continues to run as long as the value of i is greater than or equal to 0 (the index of the first element). 
   // When i becomes -1, the condition is false, and the loop terminates.  After each iteration of the loop, the value of i is decremented by 1,
   //  allowing the loop to process the next element in the reverse sequence. 
-    bubbles[i].move();
+    //bubbles[i].move();
     bubbles[i].show();
-    // bubbles[i].update();           //Was breaking the sketch
+    bubbles[i].update();           //Was breaking the sketch
     
     // Remove bubble if it goes off top
     if (bubbles[i].isOffScreen()) {
@@ -35,10 +37,10 @@ function draw() {
 
 class Bubble {
   constructor() { // This code runs once when an instance is created.
-    this.x = random(width); //size
-    this.y = height + 20;   //size
+    this.location = createVector(random(width),(height + 20)); //size
+    // this.y = createVector(height + 20);   //size
     this.r = random(0,10); //radius
-    this.velocity = random(1, 3); //velocity
+    this.velocity = createVector(random(1, 3), random(-1, 0)); //velocity
     // Transparent white color
     this.color = color(255, 255, 255, 100); 
   }
@@ -49,18 +51,18 @@ class Bubble {
   show() {                    //This code runs once when .show is called.
   noStroke();
   fill(this.color);             //color in constructor
-  ellipse(this.x, this.y, this.r*3); //size in constructor height, width, radius
+  ellipse(this.location.x, this.location.y, this.r*3); //size in constructor height, width, radius
   // Add a small "highlight" for a shiny effect
   fill(255, 255, 255, 150); //higher fill number less transparency
-  ellipse(this.x - this.r/3, this.y - this.r/3, this.r/2); //found this geometry in a prompt to make a smaller circle inside the circle
- 
-  // update() {                 // This code runs once when .update() is called.        
-  //   this.velocity.add(drift);
-  //   this.location.add(this.velocity);                  //I thought maybe I could just add an update instance to class, but it was breaking the sketch, 
-  //                                                         is it because there is already a move instance?
-  // }
-
+  ellipse(this.location.x - this.r/3, this.location.y - this.r/3, this.r/2); //found this geometry in a prompt to make a smaller circle inside the circle
   }
+ 
+  update() {                // This code runs once when .update() is called.        
+    this.velocity.add(drift);
+    this.location.add(this.velocity);                  //I thought maybe I could just add an update instance to class, but it was breaking the sketch, 
+  //                                                         is it because there is already a move instance?
+  }
+
   isOffScreen() {
     return this.y < -this.r * 2;    //asked VS code, with if offOscreen if statement at the top
   }    
