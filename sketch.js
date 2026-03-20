@@ -7,12 +7,11 @@ function setup() {
 }
 
 function draw() {
-  let driftXAmount = map(mouseX, 0, width, -0.05, 0.05);      //copied from Jesse's particle sketch to add velocity for mouse location
+  let driftXAmount = map(mouseX, 0, width, -0.01, 0.01);      //copied from Jesse's particle sketch to add velocity for mouse location
   let driftYAmount = map(mouseY, 0, height, 0, 0);
     // drift.set(driftXAmount, driftYAmount); 
     drift = createVector(driftXAmount, driftYAmount);
-    //can't get this to work
-  // background(20, 30, 50); // Dark blue background
+
   background(0); //black background
 
   // Add new bubbles over time
@@ -28,9 +27,13 @@ function draw() {
     bubbles[i].show();
     bubbles[i].update();           //Was breaking the sketch
     
+    // Remove bubble if clicked
+    if (bubbles[i].wasClicked()) {
+      bubbles.splice(i, 1);
+    }
     // Remove bubble if it goes off top
-    if (bubbles[i].isOffScreen()) {
-      bubbles.splice(i, 1);               //splice(list, value, position), inserts a new value into the array when the object is 'off screen'
+    else if (bubbles[i].isOffScreen()) {
+      bubbles.splice(i, 1);
     }
   }
 }
@@ -43,10 +46,11 @@ class Bubble {
     this.velocity = createVector(random(1, 3), random(-1, 0)); //velocity
     // Transparent white color
     this.color = color(255, 255, 255, 100); 
+    this.clicked = false;  // Add this line
   }
   move() {                    //This code runs once when .show is called. Has to be above show?
     this.y -= this.velocity; // Move up the screen
-    this.x += random(-1, 0); // "Wiggle"s a random 
+    // this.x += random(-1, 0); // "Wiggle"s a random 
   }
   show() {                    //This code runs once when .show is called.
   noStroke();
@@ -63,9 +67,26 @@ class Bubble {
   //                                                         is it because there is already a move instance?
   }
 
+  wasClicked() {
+    return this.clicked;
+  }
+
+  checkClick() {
+    let distance = dist(mouseX, mouseY, this.location.x, this.location.y);
+    if (distance < this.r * 3) {  // r*3 matches your ellipse size
+      this.clicked = true;
+    }
+  }
+
   isOffScreen() {
     return this.y < -this.r * 2;    //asked VS code, with if offOscreen if statement at the top
   }    
+}
+
+function mousePressed() {
+  for (let bubble of bubbles) {
+    bubble.checkClick();
+  }
 }
 
 
