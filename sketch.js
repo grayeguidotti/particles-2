@@ -1,5 +1,6 @@
 let bubbles = [];
-let drift;                                                //for mouse location movement
+let drift;                                               //for mouse location movement
+let sound;
 
 function setup() {
   createCanvas(1100, 800);
