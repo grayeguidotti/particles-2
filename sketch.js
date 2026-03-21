@@ -2,14 +2,14 @@ let bubbles = [];
 let drift;                                               //for mouse location movement
 let music;
 let soundEffect;
-let soundEffect2;
+//let soundEffect2;
 let musicPlaying = true; // Flag to track if music is playing
 
 //Queues music
 function preload() {
   music = loadSound('assets/music2.wav');
   soundEffect = loadSound('assets/soundeffect1.wav');
-  soundEffect2 = loadSound('assets/soundeffect2.wav');
+  //soundEffect2 = loadSound('assets/soundeffect2.wav');
 
 }
 function setup() {
