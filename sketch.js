@@ -51,10 +51,8 @@ function draw() {
 
 //function to play the music
 function playMusic() { 
-  music.play();
-    if (!song.isPlaying()) {
-    song.loop(); // Loops the song continuously
-  }
+  //music.play();
+  music.loop();
 }
 
 function playSoundEffect() {
