@@ -3,10 +3,11 @@ let drift;                                               //for mouse location mo
 let music;
 let soundEffect;
 let soundEffect2;
+let musicPlaying = true; // Flag to track if music is playing
 
 //Queues music
 function preload() {
-  music = loadSound('assets/music.wav');
+  music = loadSound('assets/music2.wav');
   soundEffect = loadSound('assets/soundeffect1.wav');
   soundEffect2 = loadSound('assets/soundeffect2.wav');
 
@@ -104,6 +105,17 @@ class Bubble {
 function mousePressed() {
   for (let bubble of bubbles) {
     bubble.checkClick();
+  }
+}
+
+function keyPressed() {
+  if (key === ' ') {  // Space bar
+    musicPlaying = !musicPlaying;  // Toggle boolean
+    if (musicPlaying) {
+      music.loop();
+    } else {
+      music.stop();
+    }
   }
 }
 
