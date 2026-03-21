@@ -7,8 +7,8 @@ let soundEffect2;
 //Queues music
 function preload() {
   music = loadSound('assets/music.wav');
-  // soundEffect = loadSound('assets/sound-effect1.wav');
-  // soundEffect2 = loadSound('assets/sound-effect2.wav');
+  soundEffect = loadSound('assets/soundeffect1.wav');
+  soundEffect2 = loadSound('assets/soundeffect2.wav');
 
 }
 function setup() {
@@ -52,6 +52,13 @@ function draw() {
 //function to play the music
 function playMusic() { 
   music.play();
+    if (!song.isPlaying()) {
+    song.loop(); // Loops the song continuously
+  }
+}
+
+function playSoundEffect() {
+  soundEffect.play();
 }
 
 class Bubble {
@@ -88,6 +95,7 @@ class Bubble {
     let distance = dist(mouseX, mouseY, this.location.x, this.location.y);
     if (distance < this.r * 3) {  // r*3 matches your ellipse size
       this.clicked = true;
+      soundEffect.play();  // Play sound effect when clicked
     }
   }
   isOffScreen() {
